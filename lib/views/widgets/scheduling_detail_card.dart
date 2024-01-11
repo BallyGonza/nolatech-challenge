@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nolatech_challenge_app/blocs/blocs.dart';
 import 'package:nolatech_challenge_app/constants/constants.dart';
 import 'package:nolatech_challenge_app/data/data.dart';
 
@@ -73,6 +75,23 @@ class SchedulingDetailCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                const Text(
+                  'Chance of rain: ',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Text(
+                  'Agregar ',
+                  style: const TextStyle(fontSize: 18),
+                ),
+              ],
+            ),
+            const SizedBox(height: 8),
             Align(
               alignment: Alignment.centerRight,
               child: SizedBox(
@@ -82,7 +101,37 @@ class SchedulingDetailCard extends StatelessWidget {
                     shape: const CircleBorder(),
                   ),
                   onPressed: () {
-                    // dialog
+                    showDialog<AlertDialog>(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: const Text('Delete Scheduling'),
+                          content: const Text(
+                            'Are you sure you want to delete this scheduling?',
+                          ),
+                          actions: [
+                            TextButton(
+                              child: const Text('Cancel'),
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                            ),
+                            TextButton(
+                              child: const Text(
+                                'Delete',
+                                style: TextStyle(color: Colors.red),
+                              ),
+                              onPressed: () {
+                                Navigator.pop(context);
+                                context.read<SchedulingBloc>().add(
+                                      SchedulingEvent.remove(scheduling),
+                                    );
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                    );
                   },
                   child: const Icon(Icons.delete),
                 ),

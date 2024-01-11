@@ -17,6 +17,18 @@ class SchedulingRepository {
     }
   }
 
+  int getNumberOfSchedulings(DateTime date, TennisCourtModel tennisCourt) {
+    var count = 0;
+    final schedulings = box.values.toList();
+    for (final scheduling in schedulings) {
+      if (scheduling.date.isAtSameMomentAs(date) &&
+          scheduling.tennisCourt.id == tennisCourt.id) {
+        count++;
+      }
+    }
+    return count;
+  }
+
   // save scheduling to box
   Future<void> saveScheduling(SchedulingModel scheduling) async {
     await box.put(scheduling.id, scheduling);

@@ -15,8 +15,10 @@ class AddSchedulingScreen extends StatefulWidget {
 class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
   final TextEditingController nameController = TextEditingController();
   final _tennisCourtsRepository = TennisCourtsRepository();
+  final _schedulingRepository = SchedulingRepository();
   DateTime? selectedDate;
   TennisCourtModel? dropdownValue;
+  int numberOfSchedulings = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -50,33 +52,54 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                 child: const Text('Select date'),
               ),
             ),
-            SizedBox(
-              height: 55,
-              child: DropdownButton<TennisCourtModel>(
-                isExpanded: true,
-                hint: const Text('Select Tennis Court'),
-                value: dropdownValue,
-                icon: const Icon(Icons.arrow_downward),
-                elevation: 16,
-                underline: Container(
-                  height: 2,
-                  color: Colors.green,
+            if (selectedDate == null)
+              const Text(
+                'Please select a date to see the tennis courts',
+                style:
+                    TextStyle(color: Colors.red, fontStyle: FontStyle.italic),
+              )
+            else
+              SizedBox(
+                height: 55,
+                child: DropdownButton<TennisCourtModel>(
+                  isExpanded: true,
+                  hint: const Text('Select Tennis Court'),
+                  value: dropdownValue,
+                  icon: const Icon(Icons.arrow_downward),
+                  elevation: 16,
+                  underline: Container(
+                    height: 2,
+                    color: Colors.green,
+                  ),
+                  onChanged: (TennisCourtModel? newValue) {
+                    setState(() {
+                      dropdownValue = newValue;
+                      numberOfSchedulings =
+                          _schedulingRepository.getNumberOfSchedulings(
+                        selectedDate!,
+                        newValue!,
+                      );
+                    });
+                  },
+                  items: _tennisCourtsRepository.tennisCourts
+                      .map<DropdownMenuItem<TennisCourtModel>>(
+                          (TennisCourtModel value) {
+                    return DropdownMenuItem<TennisCourtModel>(
+                      value: value,
+                      child: Text(value.name),
+                    );
+                  }).toList(),
                 ),
-                onChanged: (TennisCourtModel? newValue) {
-                  setState(() {
-                    dropdownValue = newValue;
-                  });
-                },
-                items: _tennisCourtsRepository.tennisCourts
-                    .map<DropdownMenuItem<TennisCourtModel>>(
-                        (TennisCourtModel value) {
-                  return DropdownMenuItem<TennisCourtModel>(
-                    value: value,
-                    child: Text(value.name),
-                  );
-                }).toList(),
               ),
-            ),
+            const SizedBox(height: 16),
+            if (numberOfSchedulings >= 3)
+              const Text(
+                'Tennis Court is full, try another one!',
+                style: TextStyle(
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
             const Spacer(),
             SizedBox(
               width: double.infinity,
@@ -84,7 +107,8 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                 onPressed: () {
                   if (selectedDate == null ||
                       dropdownValue == null ||
-                      nameController.text.isEmpty) {
+                      nameController.text.isEmpty ||
+                      numberOfSchedulings >= 3) {
                   } else {
                     context.read<SchedulingBloc>().add(
                           SchedulingEvent.add(
@@ -112,7 +136,7 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
     final picked = await showDatePicker(
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
-      firstDate: DateTime(2015, 8),
+      firstDate: DateTime.now(),
       lastDate: DateTime(2101),
     );
     if (picked != null && picked != selectedDate) {
