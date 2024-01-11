@@ -1,5 +1,5 @@
-import 'package:base_app/data/data.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:nolatech_challenge_app/data/data.dart';
 
 part 'user_state.freezed.dart';
 

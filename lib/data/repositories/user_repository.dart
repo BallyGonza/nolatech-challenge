@@ -1,5 +1,5 @@
-import 'package:base_app/data/data.dart';
 import 'package:hive/hive.dart';
+import 'package:nolatech_challenge_app/data/data.dart';
 
 class UserRepository {
   UserRepository();

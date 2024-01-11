@@ -1,4 +1,4 @@
-# base_app
+# nolatech_challenge_app
 
 A new Flutter project.
 

@@ -1,7 +1,7 @@
-import 'package:base_app/blocs/blocs.dart';
-import 'package:base_app/data/data.dart';
-import 'package:base_app/data/repositories/user_repository.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:nolatech_challenge_app/blocs/blocs.dart';
+import 'package:nolatech_challenge_app/data/data.dart';
+import 'package:nolatech_challenge_app/data/repositories/user_repository.dart';
 
 class UserBloc extends Bloc<UserEvent, UserState> {
   UserBloc() : super(const UserState.initial()) {
