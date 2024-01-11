@@ -7,17 +7,17 @@ import 'package:nolatech_challenge_app/theme.dart';
 import 'package:nolatech_challenge_app/views/views.dart';
 
 Future<void> main() async {
-  Hive.registerAdapter(UserModelAdapter());
+  Hive.registerAdapter(SchedulingModelAdapter());
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
-  await Hive.openBox<UserModel>('users_box');
+  await Hive.openBox<SchedulingModel>('schedulings_box');
 
   runApp(
     MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => UserBloc(),
+          create: (context) => SchedulingBloc(),
         ),
       ],
       child: const MyApp(),
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: theme,
       debugShowCheckedModeBanner: false,
-      home: BlocBuilder<UserBloc, UserState>(
+      home: BlocBuilder<SchedulingBloc, SchedulingState>(
         builder: (context, state) {
           return state.maybeWhen(
             orElse: () => const Center(
