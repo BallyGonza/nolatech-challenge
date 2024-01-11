@@ -17,8 +17,13 @@ class SchedulingRepository {
     }
   }
 
-  // save user to box
+  // save scheduling to box
   Future<void> saveScheduling(SchedulingModel scheduling) async {
     await box.put(scheduling.id, scheduling);
+  }
+
+  // delete scheduling from box
+  Future<void> deleteScheduling(int id) async {
+    await box.delete(id);
   }
 }

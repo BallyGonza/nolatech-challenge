@@ -31,19 +31,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Tennis Court Booking',
       theme: theme,
       debugShowCheckedModeBanner: false,
-      home: BlocBuilder<SchedulingBloc, SchedulingState>(
-        builder: (context, state) {
-          return state.maybeWhen(
-            orElse: () => const Center(
-              child: CircularProgressIndicator(),
-            ),
-            loaded: (user) => const HomeScreen(),
-          );
-        },
-      ),
+      home: const HomeScreen(),
     );
   }
 }

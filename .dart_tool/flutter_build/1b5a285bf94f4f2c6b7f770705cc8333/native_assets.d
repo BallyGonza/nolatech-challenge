@@ -1,0 +1,1 @@
+ /Users/gbally/Documents/GitHub/nolatech-challenge/.dart_tool/flutter_build/1b5a285bf94f4f2c6b7f770705cc8333/native_assets.yaml: 
