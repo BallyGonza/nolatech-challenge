@@ -13,7 +13,7 @@ class SchedulingModel extends HiveObject {
   });
 
   @HiveField(0)
-  int id;
+  String id;
   @HiveField(1)
   String user;
   @HiveField(2)

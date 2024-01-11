@@ -1,7 +1,7 @@
 import 'package:nolatech_challenge_app/data/data.dart';
 
-class TennisCourtRepository {
-  TennisCourtRepository();
+class TennisCourtsRepository {
+  TennisCourtsRepository();
 
   List<TennisCourtModel> tennisCourts = [
     TennisCourtModel(

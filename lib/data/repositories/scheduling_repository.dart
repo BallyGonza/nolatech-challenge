@@ -23,7 +23,7 @@ class SchedulingRepository {
   }
 
   // delete scheduling from box
-  Future<void> deleteScheduling(int id) async {
+  Future<void> deleteScheduling(String id) async {
     await box.delete(id);
   }
 }

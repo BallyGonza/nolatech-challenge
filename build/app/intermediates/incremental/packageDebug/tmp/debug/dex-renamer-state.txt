@@ -1,4 +1,4 @@
-#Thu Jan 11 17:52:10 ART 2024
+#Thu Jan 11 19:29:58 ART 2024
 base.0=/Users/gbally/Documents/GitHub/nolatech-challenge/build/app/intermediates/dex/debug/mergeDexDebug/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex

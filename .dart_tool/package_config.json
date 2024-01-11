@@ -494,6 +494,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "sprintf",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/sprintf-7.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "stack_trace",
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/stack_trace-1.11.1",
       "packageUri": "lib/",
@@ -540,6 +546,12 @@
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/typed_data-1.3.2",
       "packageUri": "lib/",
       "languageVersion": "2.17"
+    },
+    {
+      "name": "uuid",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/uuid-4.3.3",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "vector_math",
@@ -602,7 +614,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-01-11T18:44:39.977494Z",
+  "generated": "2024-01-11T22:24:45.431689Z",
   "generator": "pub",
   "generatorVersion": "3.2.0"
 }

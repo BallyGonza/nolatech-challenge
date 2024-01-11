@@ -7,7 +7,10 @@ import 'package:nolatech_challenge_app/theme.dart';
 import 'package:nolatech_challenge_app/views/views.dart';
 
 Future<void> main() async {
-  Hive.registerAdapter(SchedulingModelAdapter());
+  Hive
+    ..registerAdapter(SchedulingModelAdapter())
+    ..registerAdapter(TennisCourtModelAdapter());
+
   WidgetsFlutterBinding.ensureInitialized();
 
   await Hive.initFlutter();
