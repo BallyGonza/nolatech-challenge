@@ -20,6 +20,13 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
   DateTime? selectedDate;
   TennisCourtModel? dropdownValue;
   int numberOfSchedulings = 0;
+  double? precipProp;
+
+  @override
+  void initState() {
+    context.read<ForecastBloc>().add(const ForecastEvent.init());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -116,6 +123,7 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                   ),
                   loading: () => const CircularProgressIndicator(),
                   loaded: (precipProp) {
+                    this.precipProp = precipProp;
                     return Text(
                       'Chance of rain: ${precipProp.toStringAsFixed(0)}%',
                     );
@@ -140,6 +148,7 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                               user: nameController.text,
                               date: selectedDate!,
                               tennisCourt: dropdownValue!,
+                              precipProp: precipProp!.toInt(),
                             ),
                           ),
                         );

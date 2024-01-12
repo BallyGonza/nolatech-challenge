@@ -21,13 +21,14 @@ class SchedulingModelAdapter extends TypeAdapter<SchedulingModel> {
       user: fields[1] as String,
       tennisCourt: fields[2] as TennisCourtModel,
       date: fields[3] as DateTime,
+      precipProp: fields[4] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, SchedulingModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -35,7 +36,9 @@ class SchedulingModelAdapter extends TypeAdapter<SchedulingModel> {
       ..writeByte(2)
       ..write(obj.tennisCourt)
       ..writeByte(3)
-      ..write(obj.date);
+      ..write(obj.date)
+      ..writeByte(4)
+      ..write(obj.precipProp);
   }
 
   @override

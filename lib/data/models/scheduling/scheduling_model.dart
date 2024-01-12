@@ -10,6 +10,7 @@ class SchedulingModel extends HiveObject {
     required this.user,
     required this.tennisCourt,
     required this.date,
+    required this.precipProp,
   });
 
   @HiveField(0)
@@ -20,4 +21,6 @@ class SchedulingModel extends HiveObject {
   TennisCourtModel tennisCourt;
   @HiveField(3)
   DateTime date;
+  @HiveField(4)
+  int precipProp;
 }

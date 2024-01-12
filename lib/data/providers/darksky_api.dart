@@ -1,3 +1,5 @@
+// ignore_for_file: inference_failure_on_function_invocation, avoid_dynamic_calls, lines_longer_than_80_chars
+
 import 'package:dio/dio.dart';
 
 class WeatherAPI {

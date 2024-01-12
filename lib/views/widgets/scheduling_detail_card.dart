@@ -17,30 +17,68 @@ class SchedulingDetailCard extends StatelessWidget {
     return Card(
       margin: const EdgeInsets.all(10),
       child: Padding(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.all(16),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'User Name: ',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
                 Text(
                   scheduling.user,
                   style: const TextStyle(
                     fontSize: 18,
-                    fontStyle: FontStyle.italic,
+                    color: Colors.green,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                    ),
+                    onPressed: () {
+                      showDialog<AlertDialog>(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            title: const Text('Delete Scheduling'),
+                            content: const Text(
+                              'Are you sure you want to delete this scheduling?',
+                            ),
+                            actions: [
+                              TextButton(
+                                child: const Text('Cancel'),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                              ),
+                              TextButton(
+                                child: const Text(
+                                  'Delete',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                  context.read<SchedulingBloc>().add(
+                                        SchedulingEvent.remove(scheduling),
+                                      );
+                                },
+                              ),
+                            ],
+                          );
+                        },
+                      );
+                    },
+                    child: const Icon(
+                      Icons.delete,
+                    ),
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 8),
+            const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -75,10 +113,10 @@ class SchedulingDetailCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 8),
-            const Row(
+            Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   'Chance of rain: ',
                   style: TextStyle(
                     fontSize: 18,
@@ -86,56 +124,10 @@ class SchedulingDetailCard extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  'Agregar ',
-                  style: TextStyle(fontSize: 18),
+                  '${scheduling.precipProp.toStringAsFixed(0)}%',
+                  style: const TextStyle(fontSize: 18),
                 ),
               ],
-            ),
-            const SizedBox(height: 8),
-            Align(
-              alignment: Alignment.centerRight,
-              child: SizedBox(
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
-                    shape: const CircleBorder(),
-                  ),
-                  onPressed: () {
-                    showDialog<AlertDialog>(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text('Delete Scheduling'),
-                          content: const Text(
-                            'Are you sure you want to delete this scheduling?',
-                          ),
-                          actions: [
-                            TextButton(
-                              child: const Text('Cancel'),
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                            ),
-                            TextButton(
-                              child: const Text(
-                                'Delete',
-                                style: TextStyle(color: Colors.red),
-                              ),
-                              onPressed: () {
-                                Navigator.pop(context);
-                                context.read<SchedulingBloc>().add(
-                                      SchedulingEvent.remove(scheduling),
-                                    );
-                              },
-                            ),
-                          ],
-                        );
-                      },
-                    );
-                  },
-                  child: const Icon(Icons.delete),
-                ),
-              ),
             ),
           ],
         ),
