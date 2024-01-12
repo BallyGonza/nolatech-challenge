@@ -22,6 +22,9 @@ Future<void> main() async {
         BlocProvider(
           create: (context) => SchedulingBloc(),
         ),
+        BlocProvider(
+          create: (context) => ForecastBloc(),
+        ),
       ],
       child: const MyApp(),
     ),

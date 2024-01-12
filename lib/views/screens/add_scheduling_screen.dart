@@ -16,6 +16,7 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
   final TextEditingController nameController = TextEditingController();
   final _tennisCourtsRepository = TennisCourtsRepository();
   final _schedulingRepository = SchedulingRepository();
+
   DateTime? selectedDate;
   TennisCourtModel? dropdownValue;
   int numberOfSchedulings = 0;
@@ -79,6 +80,12 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                         selectedDate!,
                         newValue!,
                       );
+                      context.read<ForecastBloc>().add(
+                            ForecastEvent.calculate(
+                              selectedDate!,
+                              newValue,
+                            ),
+                          );
                     });
                   },
                   items: _tennisCourtsRepository.tennisCourts
@@ -100,6 +107,22 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+            const SizedBox(height: 16),
+            BlocBuilder<ForecastBloc, ForecastState>(
+              builder: (context, state) {
+                return state.maybeWhen(
+                  orElse: () => const Center(
+                    child: SizedBox.shrink(),
+                  ),
+                  loading: () => const CircularProgressIndicator(),
+                  loaded: (precipProp) {
+                    return Text(
+                      'Chance of rain: ${precipProp.toStringAsFixed(0)}%',
+                    );
+                  },
+                );
+              },
+            ),
             const Spacer(),
             SizedBox(
               width: double.infinity,
@@ -142,6 +165,14 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
     if (picked != null && picked != selectedDate) {
       setState(() {
         selectedDate = picked;
+        if (dropdownValue != null) {
+          context.read<ForecastBloc>().add(
+                ForecastEvent.calculate(
+                  selectedDate!,
+                  dropdownValue!,
+                ),
+              );
+        }
       });
     }
   }

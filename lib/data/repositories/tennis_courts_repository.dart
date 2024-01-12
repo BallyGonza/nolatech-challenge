@@ -7,17 +7,17 @@ class TennisCourtsRepository {
     TennisCourtModel(
       id: 0,
       name: 'A',
-      address: 'Jl. Cempaka Putih No. 1',
+      address: '34.815851%2C-58.274201',
     ),
     TennisCourtModel(
       id: 1,
       name: 'B',
-      address: 'Jl. Cempaka Putih No. 2',
+      address: '34.815851%2C-58.274201',
     ),
     TennisCourtModel(
       id: 2,
       name: 'C',
-      address: 'Jl. Cempaka Putih No. 3',
+      address: '34.815851%2C-58.274201',
     ),
   ];
 }

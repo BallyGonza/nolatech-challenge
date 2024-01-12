@@ -75,10 +75,10 @@ class SchedulingDetailCard extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 8),
-            Row(
+            const Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Chance of rain: ',
                   style: TextStyle(
                     fontSize: 18,
@@ -87,7 +87,7 @@ class SchedulingDetailCard extends StatelessWidget {
                 ),
                 Text(
                   'Agregar ',
-                  style: const TextStyle(fontSize: 18),
+                  style: TextStyle(fontSize: 18),
                 ),
               ],
             ),
