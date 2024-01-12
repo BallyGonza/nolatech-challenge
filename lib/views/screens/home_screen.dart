@@ -37,7 +37,7 @@ class HomeScreen extends StatelessWidget {
               if (schedulings.isEmpty) {
                 return const Center(
                   child: Text(
-                    'No Schedulings',
+                    'No Schedulings yet...',
                   ),
                 );
               } else {

@@ -8,7 +8,6 @@ class SchedulingRepository {
 
   List<SchedulingModel> schedulings = [];
 
-  // get schedulings from box
   Future<List<SchedulingModel>> getSchedulings() async {
     schedulings = box.values.toList();
     if (schedulings.isEmpty) {
@@ -30,12 +29,10 @@ class SchedulingRepository {
     return count;
   }
 
-  // save scheduling to box
   Future<void> saveScheduling(SchedulingModel scheduling) async {
     await box.put(scheduling.id, scheduling);
   }
 
-  // delete scheduling from box
   Future<void> deleteScheduling(String id) async {
     await box.delete(id);
   }

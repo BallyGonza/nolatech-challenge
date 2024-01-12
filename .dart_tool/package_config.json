@@ -38,6 +38,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "bloc_test",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/bloc_test-9.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -134,6 +140,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "coverage",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/coverage-1.7.2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "crypto",
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/crypto-3.0.3",
       "packageUri": "lib/",
@@ -150,6 +162,12 @@
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/dart_style-2.3.4",
       "packageUri": "lib/",
       "languageVersion": "3.0"
+    },
+    {
+      "name": "diff_match_patch",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/diff_match_patch-0.4.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
     },
     {
       "name": "dio",
@@ -362,8 +380,26 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "mockito",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/mockito-5.4.4",
+      "packageUri": "lib/",
+      "languageVersion": "3.1"
+    },
+    {
+      "name": "mocktail",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/mocktail-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "nested",
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/nested-1.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "node_preamble",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/node_preamble-2.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -470,6 +506,18 @@
       "languageVersion": "2.17"
     },
     {
+      "name": "shelf_packages_handler",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/shelf_packages_handler-3.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "shelf_static",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/shelf_static-1.1.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "shelf_web_socket",
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/shelf_web_socket-1.0.4",
       "packageUri": "lib/",
@@ -492,6 +540,18 @@
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/source_helper-1.3.4",
       "packageUri": "lib/",
       "languageVersion": "2.19"
+    },
+    {
+      "name": "source_map_stack_trace",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/source_map_stack_trace-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "source_maps",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/source_maps-0.10.12",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
     },
     {
       "name": "source_span",
@@ -536,8 +596,20 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "test",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/test-1.24.9",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "test_api",
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/test_api-0.6.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "test_core",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/test_core-0.5.9",
       "packageUri": "lib/",
       "languageVersion": "3.0"
     },
@@ -572,6 +644,12 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "vm_service",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/vm_service-13.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "watcher",
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/watcher-1.1.0",
       "packageUri": "lib/",
@@ -588,6 +666,12 @@
       "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/web_socket_channel-2.4.0",
       "packageUri": "lib/",
       "languageVersion": "2.15"
+    },
+    {
+      "name": "webkit_inspection_protocol",
+      "rootUri": "file:///Users/gbally/.pub-cache/hosted/pub.dev/webkit_inspection_protocol-1.2.1",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
     },
     {
       "name": "win32",
@@ -620,7 +704,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2024-01-12T13:29:24.832527Z",
+  "generated": "2024-01-12T17:27:59.954925Z",
   "generator": "pub",
   "generatorVersion": "3.2.0"
 }

@@ -126,7 +126,7 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                 ),
               ),
             const SizedBox(height: 16),
-            if (numberOfSchedulings >= 3)
+            if (numberOfSchedulings >= 3) ...[
               const Text(
                 'Tennis Court is full, try another one!',
                 style: TextStyle(
@@ -134,13 +134,22 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 8),
+            ],
+            const SizedBox(height: 16),
             BlocBuilder<ForecastBloc, ForecastState>(
               builder: (context, state) {
                 return state.maybeWhen(
                   orElse: () => const Center(
                     child: SizedBox.shrink(),
                   ),
-                  loading: () => const CircularProgressIndicator(),
+                  loading: () => const SizedBox(
+                    height: 15,
+                    width: 15,
+                    child: CircularProgressIndicator(
+                      color: Colors.green,
+                    ),
+                  ),
                   loaded: (precipProp) {
                     return Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -166,6 +175,15 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  // diable the button
+                  backgroundColor: dropdownValue == null ||
+                          numberOfSchedulings >= 3 ||
+                          selectedDate == null ||
+                          nameController.text.isEmpty
+                      ? Colors.grey
+                      : Colors.green,
+                ),
                 onPressed: () {
                   if (selectedDate == null ||
                       dropdownValue == null ||
