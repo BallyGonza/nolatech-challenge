@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:nolatech_challenge_app/blocs/blocs.dart';
-import 'package:nolatech_challenge_app/data/data.dart';
 import 'package:nolatech_challenge_app/views/views.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -10,8 +9,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final forecastBlocs = <String, ForecastBloc>{};
-    final weatherAPI = WeatherAPI();
-    late dynamic precipProp;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -48,16 +46,12 @@ class HomeScreen extends StatelessWidget {
                   itemBuilder: (context, index) {
                     final scheduling = schedulings[index];
 
-                    // Check if there's already a ForecastBloc for this scheduling
                     if (!forecastBlocs.containsKey(scheduling.id)) {
-                      // If not, create a new one and add it to the map
                       forecastBlocs[scheduling.id] = ForecastBloc();
                     }
 
-                    // Use the ForecastBloc associated with this scheduling
                     final forecastBloc = forecastBlocs[scheduling.id];
 
-                    // Now you can add the calculate event to this specific ForecastBloc
                     forecastBloc?.add(
                       ForecastEvent.calculate(
                         scheduling.date,
@@ -69,19 +63,23 @@ class HomeScreen extends StatelessWidget {
                       bloc: forecastBloc,
                       builder: (context, forecastState) {
                         return forecastState.maybeWhen(
-                          orElse: () => const Card(
-                            margin: EdgeInsets.all(10),
-                            child: Padding(
-                              padding: EdgeInsets.all(16),
-                              child: Center(
-                                child: CircularProgressIndicator(),
+                          orElse: () => SchedulingDetailCard(
+                            scheduling: scheduling,
+                            child: const SizedBox(
+                              height: 15,
+                              width: 15,
+                              child: CircularProgressIndicator(
+                                color: Colors.green,
                               ),
                             ),
                           ),
-                          loaded: (loadedState) {
+                          loaded: (precipProp) {
                             return SchedulingDetailCard(
                               scheduling: scheduling,
-                              precipProp: loadedState,
+                              child: Text(
+                                '$precipProp%',
+                                style: const TextStyle(fontSize: 18),
+                              ),
                             );
                           },
                         );
