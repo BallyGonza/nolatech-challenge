@@ -20,7 +20,6 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
   DateTime? selectedDate;
   TennisCourtModel? dropdownValue;
   int numberOfSchedulings = 0;
-  double? precipProp;
 
   @override
   void initState() {
@@ -41,17 +40,38 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
         child: Column(
           children: [
             TextField(
+              autofocus: true,
               controller: nameController,
               decoration: const InputDecoration(
                 labelText: 'Name of the user',
+                border: OutlineInputBorder(),
               ),
             ),
             const SizedBox(height: 16),
             if (selectedDate == null)
               const SizedBox.shrink()
             else
-              Text(
-                'Selected date: ${dateFormat.format(selectedDate!)}',
+              Card(
+                margin: const EdgeInsets.all(8),
+                child: ListTile(
+                  title: Text.rich(
+                    TextSpan(
+                      children: [
+                        const TextSpan(
+                          text: 'Selected date: ',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                        TextSpan(
+                          text: dateFormat.format(selectedDate!),
+                        ),
+                      ],
+                    ),
+                  ),
+                  trailing: const Icon(Icons.calendar_month),
+                ),
               ),
             SizedBox(
               width: double.infinity,
@@ -114,7 +134,6 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-            const SizedBox(height: 16),
             BlocBuilder<ForecastBloc, ForecastState>(
               builder: (context, state) {
                 return state.maybeWhen(
@@ -123,9 +142,21 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                   ),
                   loading: () => const CircularProgressIndicator(),
                   loaded: (precipProp) {
-                    this.precipProp = precipProp;
-                    return Text(
-                      'Chance of rain: ${precipProp.toStringAsFixed(0)}%',
+                    return Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const Text(
+                          'Chance of rain: ',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          '${precipProp.toStringAsFixed(0)}%',
+                          style: const TextStyle(fontSize: 18),
+                        ),
+                      ],
                     );
                   },
                 );
@@ -148,7 +179,6 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
                               user: nameController.text,
                               date: selectedDate!,
                               tennisCourt: dropdownValue!,
-                              precipProp: precipProp!.toInt(),
                             ),
                           ),
                         );
@@ -169,7 +199,9 @@ class _AddSchedulingScreenState extends State<AddSchedulingScreen> {
       context: context,
       initialDate: selectedDate ?? DateTime.now(),
       firstDate: DateTime.now(),
-      lastDate: DateTime(2101),
+      lastDate: DateTime.now().add(
+        const Duration(days: 14),
+      ),
     );
     if (picked != null && picked != selectedDate) {
       setState(() {

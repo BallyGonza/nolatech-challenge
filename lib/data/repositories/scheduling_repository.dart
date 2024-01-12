@@ -10,6 +10,7 @@ class SchedulingRepository {
 
   // get schedulings from box
   Future<List<SchedulingModel>> getSchedulings() async {
+    schedulings = box.values.toList();
     if (schedulings.isEmpty) {
       return schedulings;
     } else {

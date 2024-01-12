@@ -7,10 +7,13 @@ import 'package:nolatech_challenge_app/data/data.dart';
 class SchedulingDetailCard extends StatelessWidget {
   const SchedulingDetailCard({
     required this.scheduling,
+    required this.precipProp,
     super.key,
   });
 
   final SchedulingModel scheduling;
+
+  final dynamic precipProp;
 
   @override
   Widget build(BuildContext context) {
@@ -123,8 +126,13 @@ class SchedulingDetailCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
+                // Text(
+                //   '${scheduling.precipProp.toStringAsFixed(0)}%',
+                //   style: const TextStyle(fontSize: 18),
+                // ),
+
                 Text(
-                  '${scheduling.precipProp.toStringAsFixed(0)}%',
+                  '${precipProp}%',
                   style: const TextStyle(fontSize: 18),
                 ),
               ],
